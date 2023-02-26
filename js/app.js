@@ -37,14 +37,26 @@ const displayPhones = (phones) => {
 
     `;
     phonesContainer.appendChild(phoneDiv);
+
+    // Stop loader
+    toggleLoader(false);
   });
 };
 
 const searchPhones = () => {
+  // Start loader
+  toggleLoader(true);
   const searchField = document.getElementById("search-field");
   const searchText = searchField.value;
   loadPhones(searchText);
   searchField.value = "";
 };
 
-loadPhones("iphone");
+const toggleLoader = (isLoading) => {
+  const loaderSection = document.getElementById("loader");
+  if (isLoading) {
+    loaderSection.classList.remove("d-none");
+  } else {
+    loaderSection.classList.add("d-none");
+  }
+};
