@@ -12,8 +12,26 @@
     />
   </head>
   <body>
-    <header><h1>Welcome To Mobile Matrix</h1></header>
-    <main class="container">
+    <!-- <header><h1>Welcome To Mobile Matrix</h1></header> -->
+    <main class="container py-5">
+      <!-- Search Button -->
+      <section>
+        <div
+          class="mb-3 w-50 mx-auto d-flex align-items-center justify-content-center"
+        >
+          <input
+            id="search-field"
+            type="email"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="find your phone"
+          />
+          <div onclick="searchPhones()" id="btn-search" class="btn btn-primary">
+            Search
+          </div>
+        </div>
+      </section>
+      <!-- Display Search Result -->
       <section>
         <div
           id="phone-container"
