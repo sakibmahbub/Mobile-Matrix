@@ -8,9 +8,17 @@ const loadPhones = async (searchText) => {
 const displayPhones = (phones) => {
   const phonesContainer = document.getElementById("phone-container");
   phonesContainer.innerText = "";
-  //   display 20 phones only
+  //   Display 20 phones only
   phones = phones.slice(0, 10);
+  // Display no phones found
+  const noPhoneFound = document.getElementById("no-phone-msg");
+  if (phones.length === 0) {
+    noPhoneFound.classList.remove("d-none");
+  } else {
+    noPhoneFound.classList.add("d-none");
+  }
 
+  //   Display all phones
   phones.forEach((phone) => {
     const phoneDiv = document.createElement("div");
     phoneDiv.classList.add("col");
@@ -33,8 +41,10 @@ const displayPhones = (phones) => {
 };
 
 const searchPhones = () => {
-  const searchText = document.getElementById("search-field").value;
+  const searchField = document.getElementById("search-field");
+  const searchText = searchField.value;
   loadPhones(searchText);
+  searchField.value = "";
 };
 
 loadPhones("iphone");
