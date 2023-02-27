@@ -38,7 +38,7 @@ const displayPhones = (phones, dataLimit) => {
         lead-in to additional content. This content is a little bit
         longer.
       </p>
-      <btton onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary">Show Details</btton>
+      <btton onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</btton>
      </div>
     </div>
 
@@ -86,3 +86,34 @@ const toggleLoader = (isLoading) => {
 document.getElementById("btn-show-all").addEventListener("click", function () {
   processSearch();
 });
+
+// Load phone details
+const loadPhoneDetails = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displayPhoneDetails(data.data);
+};
+//Display phone details
+const displayPhoneDetails = (phone) => {
+  console.log(phone);
+  const modalTitle = document.getElementById("phoneDetailModalTitle");
+  modalTitle.innerText = phone.name;
+  const modalBody = document.getElementById("phone-details-body");
+  modalBody.innerHTML = `
+  <p>Release Date : ${
+    phone.releaseDate ? phone.releaseDate : "No release date found"
+  }</p>
+  <p>Processor : ${
+    phone.mainFeatures ? phone.mainFeatures.chipSet : "No info found"
+  }</p>
+  <p>Display : ${
+    phone.mainFeatures ? phone.mainFeatures.displaySize : "No info found"
+  }</p>
+  <p>Storage : ${
+    phone.mainFeatures ? phone.mainFeatures.storage : "No info found"
+  }</p>
+  `;
+};
+
+loadPhones("apple");
