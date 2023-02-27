@@ -38,6 +38,7 @@ const displayPhones = (phones, dataLimit) => {
         lead-in to additional content. This content is a little bit
         longer.
       </p>
+      <btton onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary">Show Details</btton>
      </div>
     </div>
 
@@ -59,9 +60,17 @@ const processSearch = (dataLimit) => {
 
 // Handle search button click
 const searchPhones = () => {
-  // Start loader
   processSearch(10);
 };
+
+// Search handler on enter key
+document
+  .getElementById("search-field")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      processSearch(10);
+    }
+  });
 
 // Preloader
 const toggleLoader = (isLoading) => {
