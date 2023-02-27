@@ -38,7 +38,7 @@ const displayPhones = (phones, dataLimit) => {
         lead-in to additional content. This content is a little bit
         longer.
       </p>
-      <btton onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</btton>
+      <btton onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Read More</btton>
      </div>
     </div>
 
